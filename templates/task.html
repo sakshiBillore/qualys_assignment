@@ -1,0 +1,36 @@
+<!-- templates/task.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Status</title>
+</head>
+<body>
+    <h1>Task Status</h1>
+    <p>Status: {{ status }}</p>
+    
+    {% if status == 'running' %}
+        <form action="/tasks/{{ task_id }}" method="get">
+            <button type="submit">Refresh</button>
+        </form>
+        {% elif status == 'completed' %}
+        <p>Task Completed!</p>
+        <h2>Task Data</h2>
+        <table border="1">
+            <tr>
+                {% for key in tabular_data[0].keys() %}
+                <th>{{ key }}</th>
+                {% endfor %}
+            </tr>
+            {% for row in tabular_data %}
+            <tr>
+                {% for value in row.values() %}
+                <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>
