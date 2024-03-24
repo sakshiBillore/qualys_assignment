@@ -1,5 +1,5 @@
 
-# Flask project template
+# Qualys Assignment
 
 `QUALYS Assignment` contains a working example of a Flask project with features:
 
